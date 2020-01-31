@@ -1,0 +1,57 @@
+ 
+     
+                  <div class="col-md-6 col-sm-6">
+              <!--      <form class="create-account-form" [formGroup]="loginform" method="post">-->
+                <form [formGroup]="rForm" (ngSubmit)="signIn(rForm.value)" class="create-account-form">         
+                <h2 class="heading-title">
+                              ALREADY RESIGTERED ?
+                          </h2>
+                          <p class="form-row">
+                              <input type="text" formControlName="emailid" placeholder="Email address">
+                          </p>
+                          <br>
+                              <!--show error only when field is not valid & it's dirty or form submited-->
+                        <div *ngIf="!rForm.controls['emailid'].valid && rForm.controls['emailid'].touched" class="alert alert-danger" role="alert"> {{usernameError}} </div>
+                      
+
+
+                          <p class="form-row">
+                            <!--bind name to ngModel, it's required with minimum 5 characters-->
+                             <input type="password" formControlName="password" placeholder="Enter password">
+                          </p>
+
+                           <!--show error only when field is not valid & it's dirty or form submited-->
+                             <div  *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched" class="alert alert-danger" role="alert"> {{passwordError}} </div>
+
+                             <div class="alert alert-danger" *ngIf="errorMsg">
+                                <strong> {{errorMsg}} </strong>
+                              </div>
+                        
+                          <p class="lost-password form-group">
+                              <a href="#" rel="nofollow">Forgot your password?</a>
+                          </p> 
+                          <div class="submit">					
+                              <button name="submitcreate" id="submitcreate" type="submit" class="btn-default">
+                                  <span>
+                                      <i class="fa fa-user left"></i>
+                                      SIGN IN
+                                  </span>
+                              </button>                             
+                          </div>                          
+                     </form> 
+                  </div>
+                  
+                  <div class="wrapper">
+                    <div class="wrapped-div">
+                        <h2 [routerLink]="['/signup']" routerLinkActive="router-link-active">Sign Up</h2>
+            
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <router-outlet></router-outlet>  
+                        </div>
+                    </div>
+                </div>
+          <!--   <a [routerLink]="['/signup']">Signup</a>-->
+        
+      <!-- Loging Area End -->

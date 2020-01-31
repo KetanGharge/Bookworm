@@ -1,0 +1,76 @@
+ <!-- Breadcrumbs Area Start -->
+ <div class="breadcrumbs-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="breadcrumbs">
+             <h2>LOGIN/REGISTER</h2> 
+             <ul class="breadcrumbs-list">
+                <li>
+                    <a title="Return to Home" href="index.html">Home</a>
+                </li>
+                <li>Login</li>
+            </ul>
+          </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<!-- Breadcrumbs Area Start --> 
+    <!-- Loging Area Start -->
+    <div class="login-account section-padding">
+       <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <!--   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" action="#" class="create-account-form" method="post">-->
+                  <form #form="ngForm" (submit)="onSubmit(form)"  class="create-account-form" method="post"> 
+                  <h2 class="heading-title">
+                            CREATE AN ACCOUNT
+                        </h2>
+                        <p class="form-row">
+                          <input type="text" name="fname" #fname="ngModel" [(ngModel)]="_bookwormservice .customer.fname" placeholder="First Name">
+                      </p>
+                      <p class="form-row">
+                          <input type="text" name="lname" #lname="ngModel" [(ngModel)]="_bookwormservice .customer.lname" placeholder="Last Name">
+                      </p>
+                      <p class="form-row">
+                          <input type="text" name="address" #address="ngModel" [(ngModel)]="_bookwormservice .customer.address" placeholder="Address">
+                      </p>
+                      <p class="form-row">
+                          <input type="number" name="age" #age="ngModel" [(ngModel)]="_bookwormservice .customer.age" placeholder="Age">
+                      </p>
+                        <p class="form-row">
+                            <input type="email" name="emailid" #emailid="ngModel" [(ngModel)]="_bookwormservice .customer.emailid" placeholder="Email address">
+                        </p>
+                        <p class="form-row">
+                          <input type="password" name="password" #password="ngModel" [(ngModel)]="_bookwormservice .customer.password" placeholder="Password">
+                      </p>
+                      <p class="form-row">
+                          <input type="text" name="phoneno" #phoneno="ngModel" [(ngModel)]="_bookwormservice .customer.phoneno" placeholder="Contact Number">
+                      </p>
+                        <div class="submit">					
+                            <button name="submitcreate" id="submitcreate" type="submit" class="btn-default">
+                                <span>
+                                    <i class="fa fa-user left"></i>
+                                    Create an account
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+              </div>
+            </div>  
+        </div>  
+    </div>  
+
+    <div class="wrapper">
+        <div class="wrapped-div">
+            <h2 routerLink='/login' routerLinkActive='active'>Sign In</h2>
+
+        </div>
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <router-outlet></router-outlet>  
+            </div>
+        </div>
+    </div>
+
