@@ -1,0 +1,991 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BappaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BappaModelStoreContainer">
+    <EntitySet Name="authors" EntityType="BappaModel.Store.authors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="beneficiaries" EntityType="BappaModel.Store.beneficiaries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="beneficiarycalculations" EntityType="BappaModel.Store.beneficiarycalculations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="categories" EntityType="BappaModel.Store.categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="customers" EntityType="BappaModel.Store.customers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="invoicedetails" EntityType="BappaModel.Store.invoicedetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="invoiceheaders" EntityType="BappaModel.Store.invoiceheaders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="languages" EntityType="BappaModel.Store.languages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="myshelves" EntityType="BappaModel.Store.myshelves" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="packagedetails" EntityType="BappaModel.Store.packagedetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="productbeneficiaries" EntityType="BappaModel.Store.productbeneficiaries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="products" EntityType="BappaModel.Store.products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="producttypes" EntityType="BappaModel.Store.producttypes" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_productauthor" Association="BappaModel.Store.FK_productauthor">
+      <End Role="authors" EntitySet="authors" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_beneficiaryproductbeneficiary" Association="BappaModel.Store.FK_beneficiaryproductbeneficiary">
+      <End Role="beneficiaries" EntitySet="beneficiaries" />
+      <End Role="productbeneficiaries" EntitySet="productbeneficiaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_beneficiarycalculationinvoicedetails" Association="BappaModel.Store.FK_beneficiarycalculationinvoicedetails">
+      <End Role="invoicedetails" EntitySet="invoicedetails" />
+      <End Role="beneficiarycalculations" EntitySet="beneficiarycalculations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productbeneficiarybeneficiarycalculation" Association="BappaModel.Store.FK_productbeneficiarybeneficiarycalculation">
+      <End Role="productbeneficiaries" EntitySet="productbeneficiaries" />
+      <End Role="beneficiarycalculations" EntitySet="beneficiarycalculations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_categoryproduct" Association="BappaModel.Store.FK_categoryproduct">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customermyshelf" Association="BappaModel.Store.FK_customermyshelf">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="myshelves" EntitySet="myshelves" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoiceheadercustomer" Association="BappaModel.Store.FK_invoiceheadercustomer">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="invoiceheaders" EntitySet="invoiceheaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoiceheaderinvoicedetails" Association="BappaModel.Store.FK_invoiceheaderinvoicedetails">
+      <End Role="invoiceheaders" EntitySet="invoiceheaders" />
+      <End Role="invoicedetails" EntitySet="invoicedetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productinvoicedetails" Association="BappaModel.Store.FK_productinvoicedetails">
+      <End Role="products" EntitySet="products" />
+      <End Role="invoicedetails" EntitySet="invoicedetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_myshelfinvoiceheader" Association="BappaModel.Store.FK_myshelfinvoiceheader">
+      <End Role="invoiceheaders" EntitySet="invoiceheaders" />
+      <End Role="myshelves" EntitySet="myshelves" />
+    </AssociationSet>
+    <AssociationSet Name="FK_languageproduct" Association="BappaModel.Store.FK_languageproduct">
+      <End Role="languages" EntitySet="languages" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productmyshelf" Association="BappaModel.Store.FK_productmyshelf">
+      <End Role="products" EntitySet="products" />
+      <End Role="myshelves" EntitySet="myshelves" />
+    </AssociationSet>
+    <AssociationSet Name="FK_packagedetailsproduct" Association="BappaModel.Store.FK_packagedetailsproduct">
+      <End Role="products" EntitySet="products" />
+      <End Role="packagedetails" EntitySet="packagedetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_producttypeproduct" Association="BappaModel.Store.FK_producttypeproduct">
+      <End Role="producttypes" EntitySet="producttypes" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="productproductbeneficiary" Association="BappaModel.Store.productproductbeneficiary">
+      <End Role="product" EntitySet="products" />
+      <End Role="productbeneficiary" EntitySet="productbeneficiaries" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="authors">
+    <Key>
+      <PropertyRef Name="authorid" />
+    </Key>
+    <Property Name="authorid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="authorname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="emailid" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="contactno" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="beneficiaries">
+    <Key>
+      <PropertyRef Name="beneficiaryid" />
+    </Key>
+    <Property Name="beneficiaryid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="beneficiaryname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="accountno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ifsccode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="bankname" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="beneficiarycalculations">
+    <Key>
+      <PropertyRef Name="beneficiarycalid" />
+    </Key>
+    <Property Name="beneficiarycalid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="purchasetype" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="royaltyamt" Type="float" Nullable="false" />
+    <Property Name="productbeneficiary_productbeneficiaryid" Type="smallint" Nullable="false" />
+    <Property Name="invoicedetails_invoicedetailsid" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="categoryid" />
+    </Key>
+    <Property Name="categoryid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customers">
+    <Key>
+      <PropertyRef Name="customerid" />
+    </Key>
+    <Property Name="customerid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="lname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="age" Type="smallint" Nullable="false" />
+    <Property Name="emailid" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phoneno" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="invoicedetails">
+    <Key>
+      <PropertyRef Name="invoicedetailsid" />
+    </Key>
+    <Property Name="invoicedetailsid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="float" Nullable="false" />
+    <Property Name="product_productid" Type="smallint" Nullable="false" />
+    <Property Name="invoiceheader_invoiceheaderid" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="invoiceheaders">
+    <Key>
+      <PropertyRef Name="invoiceheaderid" />
+    </Key>
+    <Property Name="invoiceheaderid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="totalamount" Type="float" Nullable="false" />
+    <Property Name="customer_customerid" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="languages">
+    <Key>
+      <PropertyRef Name="languageid" />
+    </Key>
+    <Property Name="languageid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="myshelves">
+    <Key>
+      <PropertyRef Name="myshelfid" />
+    </Key>
+    <Property Name="myshelfid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="purchasedate" Type="datetime" Nullable="true" />
+    <Property Name="enddate" Type="datetime" Nullable="true" />
+    <Property Name="purchasetype" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="rating" Type="smallint" Nullable="true" />
+    <Property Name="customer_customerid" Type="smallint" Nullable="false" />
+    <Property Name="invoiceheader_invoiceheaderid" Type="smallint" Nullable="false" />
+    <Property Name="product_productid" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="packagedetails">
+    <Key>
+      <PropertyRef Name="packagedetailsid" />
+    </Key>
+    <Property Name="packagedetailsid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="noofdays" Type="int" Nullable="false" />
+    <Property Name="noofbooks" Type="int" Nullable="false" />
+    <Property Name="product_productid" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="productbeneficiaries">
+    <Key>
+      <PropertyRef Name="productbeneficiaryid" />
+    </Key>
+    <Property Name="productbeneficiaryid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="royalty" Type="int" Nullable="false" />
+    <Property Name="beneficiary_beneficiaryid" Type="smallint" Nullable="false" />
+    <Property Name="product_productid" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="producttitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="islibrary" Type="bit" Nullable="false" />
+    <Property Name="rentcost" Type="float" Nullable="false" />
+    <Property Name="rentmindays" Type="int" Nullable="false" />
+    <Property Name="shortdescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="longdescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="imgurl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="producturl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="avgrating" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="isrent" Type="bit" Nullable="false" />
+    <Property Name="author_authorid" Type="smallint" Nullable="false" />
+    <Property Name="category_categoryid" Type="smallint" Nullable="false" />
+    <Property Name="language_languageid" Type="smallint" Nullable="false" />
+    <Property Name="producttype_producttypeid" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="producttypes">
+    <Key>
+      <PropertyRef Name="producttypeid" />
+    </Key>
+    <Property Name="producttypeid" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_productauthor">
+    <End Role="authors" Type="BappaModel.Store.authors" Multiplicity="1" />
+    <End Role="products" Type="BappaModel.Store.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="authors">
+        <PropertyRef Name="authorid" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="author_authorid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_beneficiaryproductbeneficiary">
+    <End Role="beneficiaries" Type="BappaModel.Store.beneficiaries" Multiplicity="1" />
+    <End Role="productbeneficiaries" Type="BappaModel.Store.productbeneficiaries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="beneficiaries">
+        <PropertyRef Name="beneficiaryid" />
+      </Principal>
+      <Dependent Role="productbeneficiaries">
+        <PropertyRef Name="beneficiary_beneficiaryid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_beneficiarycalculationinvoicedetails">
+    <End Role="invoicedetails" Type="BappaModel.Store.invoicedetails" Multiplicity="1" />
+    <End Role="beneficiarycalculations" Type="BappaModel.Store.beneficiarycalculations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="invoicedetails">
+        <PropertyRef Name="invoicedetailsid" />
+      </Principal>
+      <Dependent Role="beneficiarycalculations">
+        <PropertyRef Name="invoicedetails_invoicedetailsid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productbeneficiarybeneficiarycalculation">
+    <End Role="productbeneficiaries" Type="BappaModel.Store.productbeneficiaries" Multiplicity="1" />
+    <End Role="beneficiarycalculations" Type="BappaModel.Store.beneficiarycalculations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productbeneficiaries">
+        <PropertyRef Name="productbeneficiaryid" />
+      </Principal>
+      <Dependent Role="beneficiarycalculations">
+        <PropertyRef Name="productbeneficiary_productbeneficiaryid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_categoryproduct">
+    <End Role="categories" Type="BappaModel.Store.categories" Multiplicity="1" />
+    <End Role="products" Type="BappaModel.Store.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="categoryid" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="category_categoryid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customermyshelf">
+    <End Role="customers" Type="BappaModel.Store.customers" Multiplicity="1" />
+    <End Role="myshelves" Type="BappaModel.Store.myshelves" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="myshelves">
+        <PropertyRef Name="customer_customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoiceheadercustomer">
+    <End Role="customers" Type="BappaModel.Store.customers" Multiplicity="1" />
+    <End Role="invoiceheaders" Type="BappaModel.Store.invoiceheaders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="customerid" />
+      </Principal>
+      <Dependent Role="invoiceheaders">
+        <PropertyRef Name="customer_customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoiceheaderinvoicedetails">
+    <End Role="invoiceheaders" Type="BappaModel.Store.invoiceheaders" Multiplicity="1" />
+    <End Role="invoicedetails" Type="BappaModel.Store.invoicedetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="invoiceheaders">
+        <PropertyRef Name="invoiceheaderid" />
+      </Principal>
+      <Dependent Role="invoicedetails">
+        <PropertyRef Name="invoiceheader_invoiceheaderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productinvoicedetails">
+    <End Role="products" Type="BappaModel.Store.products" Multiplicity="1" />
+    <End Role="invoicedetails" Type="BappaModel.Store.invoicedetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="invoicedetails">
+        <PropertyRef Name="product_productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_myshelfinvoiceheader">
+    <End Role="invoiceheaders" Type="BappaModel.Store.invoiceheaders" Multiplicity="1" />
+    <End Role="myshelves" Type="BappaModel.Store.myshelves" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="invoiceheaders">
+        <PropertyRef Name="invoiceheaderid" />
+      </Principal>
+      <Dependent Role="myshelves">
+        <PropertyRef Name="invoiceheader_invoiceheaderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_languageproduct">
+    <End Role="languages" Type="BappaModel.Store.languages" Multiplicity="1" />
+    <End Role="products" Type="BappaModel.Store.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="languages">
+        <PropertyRef Name="languageid" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="language_languageid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productmyshelf">
+    <End Role="products" Type="BappaModel.Store.products" Multiplicity="1" />
+    <End Role="myshelves" Type="BappaModel.Store.myshelves" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="myshelves">
+        <PropertyRef Name="product_productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_packagedetailsproduct">
+    <End Role="products" Type="BappaModel.Store.products" Multiplicity="1" />
+    <End Role="packagedetails" Type="BappaModel.Store.packagedetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="packagedetails">
+        <PropertyRef Name="product_productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_producttypeproduct">
+    <End Role="producttypes" Type="BappaModel.Store.producttypes" Multiplicity="1" />
+    <End Role="products" Type="BappaModel.Store.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producttypes">
+        <PropertyRef Name="producttypeid" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="producttype_producttypeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="productproductbeneficiary">
+    <End Role="product" Type="BappaModel.Store.products" Multiplicity="1" />
+    <End Role="productbeneficiary" Type="BappaModel.Store.productbeneficiaries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="productbeneficiary">
+        <PropertyRef Name="product_productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BappaModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BappaEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="authors" EntityType="BappaModel.author" />
+          <EntitySet Name="beneficiaries" EntityType="BappaModel.beneficiary" />
+          <EntitySet Name="beneficiarycalculations" EntityType="BappaModel.beneficiarycalculation" />
+          <EntitySet Name="categories" EntityType="BappaModel.category" />
+          <EntitySet Name="customers" EntityType="BappaModel.customer" />
+          <EntitySet Name="invoicedetails" EntityType="BappaModel.invoicedetail" />
+          <EntitySet Name="invoiceheaders" EntityType="BappaModel.invoiceheader" />
+          <EntitySet Name="languages" EntityType="BappaModel.language" />
+          <EntitySet Name="myshelves" EntityType="BappaModel.myshelf" />
+          <EntitySet Name="packagedetails" EntityType="BappaModel.packagedetail" />
+          <EntitySet Name="productbeneficiaries" EntityType="BappaModel.productbeneficiary" />
+          <EntitySet Name="products" EntityType="BappaModel.product" />
+          <EntitySet Name="producttypes" EntityType="BappaModel.producttype" />
+          <AssociationSet Name="FK_productauthor" Association="BappaModel.FK_productauthor">
+            <End Role="authors" EntitySet="authors" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_beneficiaryproductbeneficiary" Association="BappaModel.FK_beneficiaryproductbeneficiary">
+            <End Role="beneficiaries" EntitySet="beneficiaries" />
+            <End Role="productbeneficiaries" EntitySet="productbeneficiaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_beneficiarycalculationinvoicedetails" Association="BappaModel.FK_beneficiarycalculationinvoicedetails">
+            <End Role="invoicedetails" EntitySet="invoicedetails" />
+            <End Role="beneficiarycalculations" EntitySet="beneficiarycalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_productbeneficiarybeneficiarycalculation" Association="BappaModel.FK_productbeneficiarybeneficiarycalculation">
+            <End Role="productbeneficiaries" EntitySet="productbeneficiaries" />
+            <End Role="beneficiarycalculations" EntitySet="beneficiarycalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categoryproduct" Association="BappaModel.FK_categoryproduct">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customermyshelf" Association="BappaModel.FK_customermyshelf">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="myshelves" EntitySet="myshelves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoiceheadercustomer" Association="BappaModel.FK_invoiceheadercustomer">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="invoiceheaders" EntitySet="invoiceheaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoiceheaderinvoicedetails" Association="BappaModel.FK_invoiceheaderinvoicedetails">
+            <End Role="invoiceheaders" EntitySet="invoiceheaders" />
+            <End Role="invoicedetails" EntitySet="invoicedetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_productinvoicedetails" Association="BappaModel.FK_productinvoicedetails">
+            <End Role="products" EntitySet="products" />
+            <End Role="invoicedetails" EntitySet="invoicedetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_myshelfinvoiceheader" Association="BappaModel.FK_myshelfinvoiceheader">
+            <End Role="invoiceheaders" EntitySet="invoiceheaders" />
+            <End Role="myshelves" EntitySet="myshelves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_languageproduct" Association="BappaModel.FK_languageproduct">
+            <End Role="languages" EntitySet="languages" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_productmyshelf" Association="BappaModel.FK_productmyshelf">
+            <End Role="products" EntitySet="products" />
+            <End Role="myshelves" EntitySet="myshelves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_packagedetailsproduct" Association="BappaModel.FK_packagedetailsproduct">
+            <End Role="products" EntitySet="products" />
+            <End Role="packagedetails" EntitySet="packagedetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producttypeproduct" Association="BappaModel.FK_producttypeproduct">
+            <End Role="producttypes" EntitySet="producttypes" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="productproductbeneficiary" Association="BappaModel.productproductbeneficiary">
+            <End Role="product" EntitySet="products" />
+            <End Role="productbeneficiary" EntitySet="productbeneficiaries" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="author">
+          <Key>
+            <PropertyRef Name="authorid" />
+          </Key>
+          <Property Name="authorid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="authorname" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="emailid" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="contactno" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="products" Relationship="BappaModel.FK_productauthor" FromRole="authors" ToRole="products" />
+        </EntityType>
+        <EntityType Name="beneficiary">
+          <Key>
+            <PropertyRef Name="beneficiaryid" />
+          </Key>
+          <Property Name="beneficiaryid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="beneficiaryname" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="accountno" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ifsccode" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="bankname" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="productbeneficiaries" Relationship="BappaModel.FK_beneficiaryproductbeneficiary" FromRole="beneficiaries" ToRole="productbeneficiaries" />
+        </EntityType>
+        <EntityType Name="beneficiarycalculation">
+          <Key>
+            <PropertyRef Name="beneficiarycalid" />
+          </Key>
+          <Property Name="beneficiarycalid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="purchasetype" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="royaltyamt" Type="Double" Nullable="false" />
+          <Property Name="productbeneficiary_productbeneficiaryid" Type="Int16" Nullable="false" />
+          <Property Name="invoicedetails_invoicedetailsid" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="invoicedetail" Relationship="BappaModel.FK_beneficiarycalculationinvoicedetails" FromRole="beneficiarycalculations" ToRole="invoicedetails" />
+          <NavigationProperty Name="productbeneficiary" Relationship="BappaModel.FK_productbeneficiarybeneficiarycalculation" FromRole="beneficiarycalculations" ToRole="productbeneficiaries" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="categoryid" />
+          </Key>
+          <Property Name="categoryid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="products" Relationship="BappaModel.FK_categoryproduct" FromRole="categories" ToRole="products" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerid" />
+          </Key>
+          <Property Name="customerid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="fname" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="lname" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="age" Type="Int16" Nullable="false" />
+          <Property Name="emailid" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="phoneno" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="myshelves" Relationship="BappaModel.FK_customermyshelf" FromRole="customers" ToRole="myshelves" />
+          <NavigationProperty Name="invoiceheaders" Relationship="BappaModel.FK_invoiceheadercustomer" FromRole="customers" ToRole="invoiceheaders" />
+        </EntityType>
+        <EntityType Name="invoicedetail">
+          <Key>
+            <PropertyRef Name="invoicedetailsid" />
+          </Key>
+          <Property Name="invoicedetailsid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="amount" Type="Double" Nullable="false" />
+          <Property Name="product_productid" Type="Int16" Nullable="false" />
+          <Property Name="invoiceheader_invoiceheaderid" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="beneficiarycalculations" Relationship="BappaModel.FK_beneficiarycalculationinvoicedetails" FromRole="invoicedetails" ToRole="beneficiarycalculations" />
+          <NavigationProperty Name="invoiceheader" Relationship="BappaModel.FK_invoiceheaderinvoicedetails" FromRole="invoicedetails" ToRole="invoiceheaders" />
+          <NavigationProperty Name="product" Relationship="BappaModel.FK_productinvoicedetails" FromRole="invoicedetails" ToRole="products" />
+        </EntityType>
+        <EntityType Name="invoiceheader">
+          <Key>
+            <PropertyRef Name="invoiceheaderid" />
+          </Key>
+          <Property Name="invoiceheaderid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="totalamount" Type="Double" Nullable="false" />
+          <Property Name="customer_customerid" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="BappaModel.FK_invoiceheadercustomer" FromRole="invoiceheaders" ToRole="customers" />
+          <NavigationProperty Name="invoicedetails" Relationship="BappaModel.FK_invoiceheaderinvoicedetails" FromRole="invoiceheaders" ToRole="invoicedetails" />
+          <NavigationProperty Name="myshelves" Relationship="BappaModel.FK_myshelfinvoiceheader" FromRole="invoiceheaders" ToRole="myshelves" />
+        </EntityType>
+        <EntityType Name="language">
+          <Key>
+            <PropertyRef Name="languageid" />
+          </Key>
+          <Property Name="languageid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="products" Relationship="BappaModel.FK_languageproduct" FromRole="languages" ToRole="products" />
+        </EntityType>
+        <EntityType Name="myshelf">
+          <Key>
+            <PropertyRef Name="myshelfid" />
+          </Key>
+          <Property Name="myshelfid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="purchasedate" Type="DateTime" Precision="3" />
+          <Property Name="enddate" Type="DateTime" Precision="3" Nullable="true" />
+          <Property Name="purchasetype" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="rating" Type="Int16" Nullable="true" />
+          <Property Name="customer_customerid" Type="Int16" Nullable="false" />
+          <Property Name="invoiceheader_invoiceheaderid" Type="Int16" Nullable="false" />
+          <Property Name="product_productid" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="BappaModel.FK_customermyshelf" FromRole="myshelves" ToRole="customers" />
+          <NavigationProperty Name="invoiceheader" Relationship="BappaModel.FK_myshelfinvoiceheader" FromRole="myshelves" ToRole="invoiceheaders" />
+          <NavigationProperty Name="product" Relationship="BappaModel.FK_productmyshelf" FromRole="myshelves" ToRole="products" />
+        </EntityType>
+        <EntityType Name="packagedetail">
+          <Key>
+            <PropertyRef Name="packagedetailsid" />
+          </Key>
+          <Property Name="packagedetailsid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="noofdays" Type="Int32" Nullable="false" />
+          <Property Name="noofbooks" Type="Int32" Nullable="false" />
+          <Property Name="product_productid" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="BappaModel.FK_packagedetailsproduct" FromRole="packagedetails" ToRole="products" />
+        </EntityType>
+        <EntityType Name="productbeneficiary">
+          <Key>
+            <PropertyRef Name="productbeneficiaryid" />
+          </Key>
+          <Property Name="productbeneficiaryid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="royalty" Type="Int32" Nullable="false" />
+          <Property Name="beneficiary_beneficiaryid" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="beneficiary" Relationship="BappaModel.FK_beneficiaryproductbeneficiary" FromRole="productbeneficiaries" ToRole="beneficiaries" />
+          <NavigationProperty Name="beneficiarycalculations" Relationship="BappaModel.FK_productbeneficiarybeneficiarycalculation" FromRole="productbeneficiaries" ToRole="beneficiarycalculations" />
+          <NavigationProperty Name="product" Relationship="BappaModel.productproductbeneficiary" FromRole="productbeneficiary" ToRole="product" />
+          <Property Type="Int16" Name="product_productid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="producttitle" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="islibrary" Type="Boolean" Nullable="false" />
+          <Property Name="rentcost" Type="Double" Nullable="false" />
+          <Property Name="rentmindays" Type="Int32" Nullable="false" />
+          <Property Name="shortdescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="longdescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="imgurl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="producturl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="avgrating" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="isrent" Type="Boolean" Nullable="false" />
+          <Property Name="author_authorid" Type="Int16" Nullable="false" />
+          <Property Name="category_categoryid" Type="Int16" Nullable="false" />
+          <Property Name="language_languageid" Type="Int16" Nullable="false" />
+          <Property Name="producttype_producttypeid" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="author" Relationship="BappaModel.FK_productauthor" FromRole="products" ToRole="authors" />
+          <NavigationProperty Name="category" Relationship="BappaModel.FK_categoryproduct" FromRole="products" ToRole="categories" />
+          <NavigationProperty Name="invoicedetails" Relationship="BappaModel.FK_productinvoicedetails" FromRole="products" ToRole="invoicedetails" />
+          <NavigationProperty Name="language" Relationship="BappaModel.FK_languageproduct" FromRole="products" ToRole="languages" />
+          <NavigationProperty Name="myshelves" Relationship="BappaModel.FK_productmyshelf" FromRole="products" ToRole="myshelves" />
+          <NavigationProperty Name="packagedetails" Relationship="BappaModel.FK_packagedetailsproduct" FromRole="products" ToRole="packagedetails" />
+          <NavigationProperty Name="producttype" Relationship="BappaModel.FK_producttypeproduct" FromRole="products" ToRole="producttypes" />
+          <NavigationProperty Name="productbeneficiaries" Relationship="BappaModel.productproductbeneficiary" FromRole="product" ToRole="productbeneficiary" />
+        </EntityType>
+        <EntityType Name="producttype">
+          <Key>
+            <PropertyRef Name="producttypeid" />
+          </Key>
+          <Property Name="producttypeid" Type="Int16" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="products" Relationship="BappaModel.FK_producttypeproduct" FromRole="producttypes" ToRole="products" />
+        </EntityType>
+        <Association Name="FK_productauthor">
+          <End Role="authors" Type="BappaModel.author" Multiplicity="1" />
+          <End Role="products" Type="BappaModel.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="authors">
+              <PropertyRef Name="authorid" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="author_authorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_beneficiaryproductbeneficiary">
+          <End Role="beneficiaries" Type="BappaModel.beneficiary" Multiplicity="1" />
+          <End Role="productbeneficiaries" Type="BappaModel.productbeneficiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="beneficiaries">
+              <PropertyRef Name="beneficiaryid" />
+            </Principal>
+            <Dependent Role="productbeneficiaries">
+              <PropertyRef Name="beneficiary_beneficiaryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_beneficiarycalculationinvoicedetails">
+          <End Role="invoicedetails" Type="BappaModel.invoicedetail" Multiplicity="1" />
+          <End Role="beneficiarycalculations" Type="BappaModel.beneficiarycalculation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="invoicedetails">
+              <PropertyRef Name="invoicedetailsid" />
+            </Principal>
+            <Dependent Role="beneficiarycalculations">
+              <PropertyRef Name="invoicedetails_invoicedetailsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_productbeneficiarybeneficiarycalculation">
+          <End Role="productbeneficiaries" Type="BappaModel.productbeneficiary" Multiplicity="1" />
+          <End Role="beneficiarycalculations" Type="BappaModel.beneficiarycalculation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productbeneficiaries">
+              <PropertyRef Name="productbeneficiaryid" />
+            </Principal>
+            <Dependent Role="beneficiarycalculations">
+              <PropertyRef Name="productbeneficiary_productbeneficiaryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categoryproduct">
+          <End Role="categories" Type="BappaModel.category" Multiplicity="1" />
+          <End Role="products" Type="BappaModel.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="categoryid" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="category_categoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customermyshelf">
+          <End Role="customers" Type="BappaModel.customer" Multiplicity="1" />
+          <End Role="myshelves" Type="BappaModel.myshelf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="customerid" />
+            </Principal>
+            <Dependent Role="myshelves">
+              <PropertyRef Name="customer_customerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoiceheadercustomer">
+          <End Role="customers" Type="BappaModel.customer" Multiplicity="1" />
+          <End Role="invoiceheaders" Type="BappaModel.invoiceheader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="customerid" />
+            </Principal>
+            <Dependent Role="invoiceheaders">
+              <PropertyRef Name="customer_customerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoiceheaderinvoicedetails">
+          <End Role="invoiceheaders" Type="BappaModel.invoiceheader" Multiplicity="1" />
+          <End Role="invoicedetails" Type="BappaModel.invoicedetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="invoiceheaders">
+              <PropertyRef Name="invoiceheaderid" />
+            </Principal>
+            <Dependent Role="invoicedetails">
+              <PropertyRef Name="invoiceheader_invoiceheaderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_productinvoicedetails">
+          <End Role="products" Type="BappaModel.product" Multiplicity="1" />
+          <End Role="invoicedetails" Type="BappaModel.invoicedetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="invoicedetails">
+              <PropertyRef Name="product_productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_myshelfinvoiceheader">
+          <End Role="invoiceheaders" Type="BappaModel.invoiceheader" Multiplicity="1" />
+          <End Role="myshelves" Type="BappaModel.myshelf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="invoiceheaders">
+              <PropertyRef Name="invoiceheaderid" />
+            </Principal>
+            <Dependent Role="myshelves">
+              <PropertyRef Name="invoiceheader_invoiceheaderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_languageproduct">
+          <End Role="languages" Type="BappaModel.language" Multiplicity="1" />
+          <End Role="products" Type="BappaModel.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="languages">
+              <PropertyRef Name="languageid" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="language_languageid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_productmyshelf">
+          <End Role="products" Type="BappaModel.product" Multiplicity="1" />
+          <End Role="myshelves" Type="BappaModel.myshelf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="myshelves">
+              <PropertyRef Name="product_productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_packagedetailsproduct">
+          <End Role="products" Type="BappaModel.product" Multiplicity="1" />
+          <End Role="packagedetails" Type="BappaModel.packagedetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="packagedetails">
+              <PropertyRef Name="product_productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producttypeproduct">
+          <End Role="producttypes" Type="BappaModel.producttype" Multiplicity="1" />
+          <End Role="products" Type="BappaModel.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producttypes">
+              <PropertyRef Name="producttypeid" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="producttype_producttypeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productproductbeneficiary">
+          <End Type="BappaModel.product" Role="product" Multiplicity="1" />
+          <End Type="BappaModel.productbeneficiary" Role="productbeneficiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="productbeneficiary">
+              <PropertyRef Name="product_productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BappaModelStoreContainer" CdmEntityContainer="BappaEntities">
+    <EntitySetMapping Name="authors">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.author)">
+        <MappingFragment StoreEntitySet="authors">
+          <ScalarProperty Name="authorid" ColumnName="authorid" />
+          <ScalarProperty Name="authorname" ColumnName="authorname" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="contactno" ColumnName="contactno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="beneficiaries">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.beneficiary)">
+        <MappingFragment StoreEntitySet="beneficiaries">
+          <ScalarProperty Name="beneficiaryid" ColumnName="beneficiaryid" />
+          <ScalarProperty Name="beneficiaryname" ColumnName="beneficiaryname" />
+          <ScalarProperty Name="accountno" ColumnName="accountno" />
+          <ScalarProperty Name="ifsccode" ColumnName="ifsccode" />
+          <ScalarProperty Name="bankname" ColumnName="bankname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="beneficiarycalculations">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.beneficiarycalculation)">
+        <MappingFragment StoreEntitySet="beneficiarycalculations">
+          <ScalarProperty Name="beneficiarycalid" ColumnName="beneficiarycalid" />
+          <ScalarProperty Name="purchasetype" ColumnName="purchasetype" />
+          <ScalarProperty Name="royaltyamt" ColumnName="royaltyamt" />
+          <ScalarProperty Name="productbeneficiary_productbeneficiaryid" ColumnName="productbeneficiary_productbeneficiaryid" />
+          <ScalarProperty Name="invoicedetails_invoicedetailsid" ColumnName="invoicedetails_invoicedetailsid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.category)">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.customer)">
+        <MappingFragment StoreEntitySet="customers">
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="phoneno" ColumnName="phoneno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="invoicedetails">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.invoicedetail)">
+        <MappingFragment StoreEntitySet="invoicedetails">
+          <ScalarProperty Name="invoicedetailsid" ColumnName="invoicedetailsid" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="product_productid" ColumnName="product_productid" />
+          <ScalarProperty Name="invoiceheader_invoiceheaderid" ColumnName="invoiceheader_invoiceheaderid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="invoiceheaders">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.invoiceheader)">
+        <MappingFragment StoreEntitySet="invoiceheaders">
+          <ScalarProperty Name="invoiceheaderid" ColumnName="invoiceheaderid" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="totalamount" ColumnName="totalamount" />
+          <ScalarProperty Name="customer_customerid" ColumnName="customer_customerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="languages">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.language)">
+        <MappingFragment StoreEntitySet="languages">
+          <ScalarProperty Name="languageid" ColumnName="languageid" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="myshelves">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.myshelf)">
+        <MappingFragment StoreEntitySet="myshelves">
+          <ScalarProperty Name="myshelfid" ColumnName="myshelfid" />
+          <ScalarProperty Name="purchasedate" ColumnName="purchasedate" />
+          <ScalarProperty Name="enddate" ColumnName="enddate" />
+          <ScalarProperty Name="purchasetype" ColumnName="purchasetype" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="customer_customerid" ColumnName="customer_customerid" />
+          <ScalarProperty Name="invoiceheader_invoiceheaderid" ColumnName="invoiceheader_invoiceheaderid" />
+          <ScalarProperty Name="product_productid" ColumnName="product_productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="packagedetails">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.packagedetail)">
+        <MappingFragment StoreEntitySet="packagedetails">
+          <ScalarProperty Name="packagedetailsid" ColumnName="packagedetailsid" />
+          <ScalarProperty Name="noofdays" ColumnName="noofdays" />
+          <ScalarProperty Name="noofbooks" ColumnName="noofbooks" />
+          <ScalarProperty Name="product_productid" ColumnName="product_productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productbeneficiaries">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.productbeneficiary)">
+        <MappingFragment StoreEntitySet="productbeneficiaries">
+          <ScalarProperty Name="productbeneficiaryid" ColumnName="productbeneficiaryid" />
+          <ScalarProperty Name="royalty" ColumnName="royalty" />
+          <ScalarProperty Name="beneficiary_beneficiaryid" ColumnName="beneficiary_beneficiaryid" />
+          <ScalarProperty Name="product_productid" ColumnName="product_productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.product)">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="producttitle" ColumnName="producttitle" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="islibrary" ColumnName="islibrary" />
+          <ScalarProperty Name="rentcost" ColumnName="rentcost" />
+          <ScalarProperty Name="rentmindays" ColumnName="rentmindays" />
+          <ScalarProperty Name="shortdescription" ColumnName="shortdescription" />
+          <ScalarProperty Name="longdescription" ColumnName="longdescription" />
+          <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+          <ScalarProperty Name="producturl" ColumnName="producturl" />
+          <ScalarProperty Name="avgrating" ColumnName="avgrating" />
+          <ScalarProperty Name="isrent" ColumnName="isrent" />
+          <ScalarProperty Name="author_authorid" ColumnName="author_authorid" />
+          <ScalarProperty Name="category_categoryid" ColumnName="category_categoryid" />
+          <ScalarProperty Name="language_languageid" ColumnName="language_languageid" />
+          <ScalarProperty Name="producttype_producttypeid" ColumnName="producttype_producttypeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producttypes">
+      <EntityTypeMapping TypeName="IsTypeOf(BappaModel.producttype)">
+        <MappingFragment StoreEntitySet="producttypes">
+          <ScalarProperty Name="producttypeid" ColumnName="producttypeid" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
