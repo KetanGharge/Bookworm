@@ -1,0 +1,141 @@
+
+<!-- Breadcrumbs Area Start -->
+<div class="breadcrumbs-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="breadcrumbs">
+             <h2>PURCHASE BOOKS</h2> 
+             <ul class="breadcrumbs-list">
+                <li>
+                    <a title="Return to Home" href="index.html">Home</a>
+                </li>
+                <li>BuyBook</li>
+            </ul>
+          </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<!-- Breadcrumbs Area Start --> 
+    <!-- Shop Area Start -->
+    <div class="shopping-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="shop-widget">
+                        <div class="shop-widget-top">
+                            <aside class="widget widget-categories">
+                                <h2 class="sidebar-title text-center">CATEGORY</h2>
+                                <ul class="sidebar-menu">
+                                    <li>
+                                        <a [routerLink]="['/purchase']" routerLinkActive="router-link-active" >
+                                           <i class="fa fa-angle-double-right"></i>
+                                            Purchase                                          
+                                            <span>(5)</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a [routerLink]="['/rent']" routerLinkActive="router-link-active" >
+                                           <i class="fa fa-angle-double-right"></i>
+                                            Rent                                            
+                                            <span>(8)</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </aside> 
+                                                     
+                        </div>
+                        <div class="shop-widget-bottom">
+                            <aside class="widget widget-tag">
+                                <h2 class="sidebar-title">POPULAR TAG</h2>
+                                <ul class="tag-list">
+                                    <li>
+                                        <a href="#">e-book</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">writer</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">book’s</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">eassy</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">nice</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">author</a>
+                                    </li>
+                                </ul>
+                            </aside>
+                            <aside class="widget widget-seller">
+                               
+                                
+
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="wishlist-right-area table-responsive">
+                      <div> 
+                      <table class="wish-list-table">
+                          
+                            <thead>
+                                <tr>
+                                    <th class="t-product-name">Products</th>
+                                    <th class="product-details-comment">Product Details & Comment</th>
+                                    <th class="product-price-cart">Add To Cart</th>
+                                    <th class="w-product-remove">Remove</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody *ngFor="let i of mydata">
+                                <tr>
+                                    <td class="product-image">
+                                        <a href="#">
+                                            <img src="{{i.imgurl}}" alt="">
+                                        </a>
+                                    </td>
+                                    <td class="product-details">
+                                        <h4>{{i.producttitle}}</h4>
+                                    <p> {{i.longdescription}}</p>
+                                        
+                                    </td>
+                                    <td class="product-cart">
+                                        <div class="product-cart-details">
+                                 
+                                         <button type="button" class="btn btn-success btn-sm" ><a href="{{i.producturl}}">Read</a ></button>
+
+                                        </div>
+
+                                    </td>
+                                    <td class="product-remove">
+                                        <a href="#">
+                                            <!-- <i class="flaticon-delete"></i> -->
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        
+                        </table>
+                      </div>
+                    </div>
+                    <div class="wishlist-bottom-link">
+                        <a class="wishlist-single-link" href="index.html">
+                            <i class="fa fa-angle-double-left"></i>
+                            Back
+                        </a>
+                        <div class="shopingcart-bottom-area wishlist-bottom-area pull-right">
+                            <a href="#" class="right-shoping-cart">SHARE WISHLIST</a>
+                            <a href="#" class="right-shoping-cart">ADD ALL TO CART</a>
+                            <a href="#" class="right-shoping-cart">UPDATE WISHLIST</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Shop Area End -->
